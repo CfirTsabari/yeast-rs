@@ -1,15 +1,15 @@
 tasks:
   - name: Clippy
-    init: cargo clippy --all --features=stable -- -D clippy::result_unwrap_used -D clippy::option_unwrap_used
+    init: --tests --all-targets --all-features -- -D warnings
   - name: Testing
-    init: cargo test --all --features=stable
+    init: cargo test -vv --features async-std-runtime
   - name: Build
-    init: cargo build --features=stable
+    init: cargo build --all-features
 github:
   prebuilds:
-    master: true
     branches: true
-    addLabel: prebuilt-in-gitpod
+    pullRequestsFromForks: true
+    addBadge: true
 vscode:
   extensions:
     - swellaby.vscode-rust-test-adapter
