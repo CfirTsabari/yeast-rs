@@ -10,6 +10,12 @@ keywords = ["yeast", "unique","id", "async"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/CfirTsabari/yeast-rs"
+exclude = [
+    "rust-toolchain",
+    ".github/*",
+    ".gitignore",
+
+]
 
 [package.metadata.docs.rs]
 all-features = true
@@ -29,3 +35,5 @@ tokio = {version="1.8.1",features=["sync","rt"],optional=true}
 [dev-dependencies]
 async-std = {version="1.9.0",features=["attributes"]}
 serial_test = "0.5.1"
+
+

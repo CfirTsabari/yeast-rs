@@ -1,0 +1,38 @@
+on:
+  push:
+    branches:
+      - master
+name: release-please
+jobs:
+
+  release-please:
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: GoogleCloudPlatform/release-please-action@v2
+        id: release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: rust
+          package-name: yeast-rs
+  publish:
+    needs: release-please
+    runs-on: ubuntu-latest
+    if: ${{ needs.release-please.outputs.release_created }}
+    steps:
+      - run: echo this should have been published
+
+      - name: login
+        uses: actions-rs/cargo@v1
+        with:
+          command: login
+          args: $CRATES_TOKEN
+        env:
+          CRATES_TOKEN: ${{ secrets.CratesToken }}
+
+      - name: publish
+        uses: actions-rs/cargo@v1
+        with:
+          command: cargo
+          args: publish -vv
