@@ -21,13 +21,13 @@ yeast-rs = "0.1.0"
 ```
 
 ### Simple
-This crate has one function `yeast` which return URL-safe unique id.
+This crate has one function `yeast` which return `Yeast` a URL-safe unique id.
 
 ```rust
 use yeast_rs::yeast;
 
 fn main() {
-   let id = yeast(); //=> "AHMmBX2sBHEqC1UnB._A."
+   let id = yeast().to_string(); //=> "NgqS4Rd"
 }
 ```
 
@@ -41,6 +41,6 @@ yeast-rs = {version ="0.1.0",features=["async-std-runtime"]}
 ```rust
 use yeast_rs::async_std::yeast;
 async fn func(){
-    let id = yeast().await; //=> "AHMmBX2sBHEqC1UnB._A."
+    let id = yeast().await.to_string(); //=> "NgqS4Rd"
 }
 ```

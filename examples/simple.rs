@@ -2,10 +2,10 @@ use std::{thread::sleep, time::Duration};
 use yeast_rs::yeast;
 /// possible output:
 /// '''ignore
-/// AHMmBX2sBHEqC1UnAk
-/// AHMmBX2sBHEqC1UnAk_A.
-/// AHMmBX2sBHEqC1UnB.
-/// AHMmBX2sBHEqC1UnB._A.
+/// NgqS4Rc
+/// NgqS4Rc.0
+/// NgqS4Rd
+/// NgqS4Rd.0
 /// '''
 fn main() {
     println!("{}", yeast());
