@@ -8,20 +8,32 @@ yeast is a tiny but linear growing unique id generator.
 # use yeast_rs::yeast;
 # use std::{thread::sleep, time};
 # fn main() {
-    let id :String = yeast();
+    let id :String = yeast().to_string();
 # }
 ```
 # Example
 Using the function:
 ```rust
-# use yeast_rs::yeast;
-# use std::{thread::sleep, time::Duration};
+# use yeast_rs::{yeast,Yeast};
+# use std::{thread::sleep, time::Duration,convert::TryInto};
 # fn main() {
-    println!("{}", yeast());
-    println!("{}", yeast());
+    let first_id :Yeast = yeast();
+    let second_id :Yeast = yeast();
     sleep(Duration::from_millis(1));
-    println!("{}", yeast());
-    println!("{}", yeast());
+    let third_id :Yeast = yeast();
+
+    // Based on the same timestamp but different values
+    assert_ne!(first_id.to_string(), second_id.to_string());
+    assert_eq!(first_id.timestamp_millis(), second_id.timestamp_millis());
+
+    // Different Timestamps
+    assert_ne!(first_id.timestamp_millis(), third_id.timestamp_millis());
+
+    // Can be converted back
+    let third_id_converted: Yeast = third_id.to_string().try_into().unwrap();
+    assert_eq!(third_id_converted.timestamp_millis(), third_id.timestamp_millis());
+
+
 # }
 
 ```
@@ -31,13 +43,16 @@ This crate provides these cargo features:
 - `tokio-runtime`: include an async version of yeast built on the tokio runtime.
  */
 
-mod utils;
+mod encode;
+mod yeast;
 
 use std::sync::Mutex;
-use utils::Yeast;
+use yeast::YeastGenerator;
+
+pub use yeast::Yeast;
 
 lazy_static::lazy_static! {
-    static ref INSTANCE: Mutex<Yeast> = Mutex::new(Yeast::new());
+    static ref INSTANCE: Mutex<YeastGenerator> = Mutex::new(YeastGenerator::new());
 }
 /// Returns a A unique id.
 ///
@@ -47,17 +62,17 @@ lazy_static::lazy_static! {
 /// use yeast_rs::yeast;
 /// let unique_id = yeast();
 /// ```
-pub fn yeast() -> String {
+pub fn yeast() -> Yeast {
     INSTANCE.lock().unwrap().next().unwrap()
 }
 
 /// support for the async-std runtime
 #[cfg(feature = "async-std-runtime")]
 pub mod async_std {
-    use crate::Yeast;
+    use crate::{Yeast, YeastGenerator};
     use async_std::sync::Mutex;
     lazy_static::lazy_static! {
-        static ref INSTANCE: Mutex<Yeast> = Mutex::new(Yeast::new());
+        static ref INSTANCE: Mutex<YeastGenerator> = Mutex::new(YeastGenerator::new());
     }
     /// Returns a A unique id.
     ///
@@ -69,7 +84,7 @@ pub mod async_std {
     /// let unique_id = yeast().await;
     /// # }
     /// ```
-    pub async fn yeast() -> String {
+    pub async fn yeast() -> Yeast {
         INSTANCE.lock().await.next().unwrap()
     }
 }
@@ -77,10 +92,10 @@ pub mod async_std {
 /// support for the tokio runtime
 #[cfg(feature = "tokio-runtime")]
 pub mod tokio {
-    use crate::Yeast;
+    use crate::{Yeast, YeastGenerator};
     use tokio::sync::Mutex;
     lazy_static::lazy_static! {
-        static ref INSTANCE: Mutex<Yeast> = Mutex::new(Yeast::new());
+        static ref INSTANCE: Mutex<YeastGenerator> = Mutex::new(YeastGenerator::new());
     }
     /// Returns a A unique id.
     ///
@@ -92,15 +107,18 @@ pub mod tokio {
     /// let unique_id = yeast().await;
     /// # }
     /// ```
-    pub async fn yeast() -> String {
+    pub async fn yeast() -> Yeast {
         INSTANCE.lock().await.next().unwrap()
     }
 }
 
 #[cfg(test)]
 mod tests {
+    use super::Yeast;
+    use chrono::Utc;
     use serial_test::serial;
     use std::collections::HashSet;
+    use std::convert::TryInto;
     use std::future::Future;
 
     // get current time
@@ -113,40 +131,51 @@ mod tests {
         while cur == now() {}
     }
 
+    #[test]
+    #[serial]
+    fn test_convert() {
+        wait_new_milli();
+        let bad_conversion: Result<Yeast, ()> = "...".to_string().try_into();
+        let (now, id) = (Utc::now().timestamp_millis(), crate::yeast());
+        let id_converted: Yeast = id.to_string().try_into().unwrap();
+        assert_eq!(id_converted.timestamp_millis(), now);
+        assert!(bad_conversion.is_err())
+    }
+
     async fn test_sanity<Fut>(yeast: impl Fn() -> Fut)
     where
-        Fut: Future<Output = String>,
+        Fut: Future<Output = Yeast>,
     {
-        let res: String = yeast().await;
-        assert!(res.len() > 8)
+        let res: String = yeast().await.to_string();
+        assert!(res.len() > 5)
     }
 
     async fn test_multiple_yeast_in_same_milli<Fut>(yeast: impl Fn() -> Fut)
     where
-        Fut: Future<Output = String>,
+        Fut: Future<Output = Yeast>,
     {
         for _ in 0..10 {
             wait_new_milli();
-            let first = yeast().await;
-            let second = yeast().await;
-            let third = yeast().await;
-            assert!(!first.contains('_'));
-            assert!(second.contains(format!("_{}", crate::utils::encode(0)).as_str()));
-            assert!(third.contains(format!("_{}", crate::utils::encode(1)).as_str()));
+            let first = yeast().await.to_string();
+            let second = yeast().await.to_string();
+            let third = yeast().await.to_string();
+            assert!(!first.contains('.'));
+            assert!(second.contains(format!(".{}", crate::encode::encode(0)).as_str()));
+            assert!(third.contains(format!(".{}", crate::encode::encode(1)).as_str()));
         }
     }
 
     async fn test_multiple_yeast<Fut>(yeast: impl Fn() -> Fut)
     where
-        Fut: Future<Output = String>,
+        Fut: Future<Output = Yeast>,
     {
         let mut res = HashSet::new();
         for _ in 0..100_000 {
-            assert!(res.insert(yeast().await));
+            assert!(res.insert(yeast().await.to_string()));
         }
     }
 
-    async fn fake_async_yeast() -> String {
+    async fn fake_async_yeast() -> Yeast {
         crate::yeast()
     }
 
