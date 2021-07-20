@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1626822856928,
+  "lastUpdate": 1626823009072,
   "repoUrl": "https://github.com/CfirTsabari/yeast-rs",
   "entries": {
     "Rust Benchmark": [
@@ -461,6 +461,48 @@ window.BENCHMARK_DATA = {
             "name": "tokio_yeast",
             "value": 492,
             "range": "± 5",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "41898282+github-actions[bot]@users.noreply.github.com",
+            "name": "github-actions[bot]",
+            "username": "github-actions[bot]"
+          },
+          "committer": {
+            "email": "cfir16@gmail.com",
+            "name": "CfirTsabari",
+            "username": "CfirTsabari"
+          },
+          "distinct": true,
+          "id": "313a0f669d902c84e4416d668ccf720098928459",
+          "message": "chore: release 0.3.0",
+          "timestamp": "2021-07-21T02:12:22+03:00",
+          "tree_id": "392d6877e501fbf48b217baaac6e2fa06e0b31dc",
+          "url": "https://github.com/CfirTsabari/yeast-rs/commit/313a0f669d902c84e4416d668ccf720098928459"
+        },
+        "date": 1626823008186,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "async_std_yeast",
+            "value": 561,
+            "range": "± 30",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "yeast",
+            "value": 535,
+            "range": "± 187",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "tokio_yeast",
+            "value": 621,
+            "range": "± 46",
             "unit": "ns/iter"
           }
         ]
