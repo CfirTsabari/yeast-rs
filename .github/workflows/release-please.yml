@@ -34,5 +34,5 @@ jobs:
       - name: publish
         uses: actions-rs/cargo@v1
         with:
-          command: cargo
-          args: publish -vv
+          command: publish
+          args: -vv
