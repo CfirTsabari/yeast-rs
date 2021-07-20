@@ -1,12 +1,13 @@
 [package]
 name = "yeast-rs"
 version = "0.2.1"
+description = "Tiny but linear growing unique id generator."
 edition = "2018"
 authors = [
     "Cfir Tsabari <cfir16@gmail.com>",
 ]
 documentation = "https://docs.rs/yeast-rs"
-keywords = ["yeast", "unique","id", "async"]
+keywords = ["yeast", "unique","id", "async","growing"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/CfirTsabari/yeast-rs"
