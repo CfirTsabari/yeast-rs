@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.2.1](https://www.github.com/CfirTsabari/yeast-rs/compare/v0.2.0...v0.2.1) (2021-07-20)
+
+
+### Bug Fixes
+
+* adding checkout to publish action ([a47537e](https://www.github.com/CfirTsabari/yeast-rs/commit/a47537eee0be8f105295f6602fc0a88a43a9f49f))
+
 ## [0.2.0](https://www.github.com/CfirTsabari/yeast-rs/compare/v0.1.0...v0.2.0) (2021-07-20)
 
 

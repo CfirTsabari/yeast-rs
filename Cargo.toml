@@ -1,6 +1,6 @@
 [package]
 name = "yeast-rs"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2018"
 authors = [
     "Cfir Tsabari <cfir16@gmail.com>",
