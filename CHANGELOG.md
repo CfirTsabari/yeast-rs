@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.3.0](https://www.github.com/CfirTsabari/yeast-rs/compare/v0.2.1...v0.3.0) (2021-07-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* adding description to crate
+
+### Bug Fixes
+
+* adding descrition to crate ([e56f2ee](https://www.github.com/CfirTsabari/yeast-rs/commit/e56f2eef33eb423c60ba966c9a1f6febf6a50762))
+
+
+### Miscellaneous Chores
+
+* adding description to crate ([d4c2924](https://www.github.com/CfirTsabari/yeast-rs/commit/d4c29245d7075e1d824f0e1651729dd032548156))
+
 ### [0.2.1](https://www.github.com/CfirTsabari/yeast-rs/compare/v0.2.0...v0.2.1) (2021-07-20)
 
 
