@@ -52,6 +52,6 @@ yeast-rs = {version ="0.1.0",features=["async-std-runtime"]}
 ```rust
 use yeast_rs::async_std::yeast;
 async fn func(){
-    let id = yeast().await.to_string(); //=> "NgqS4Rd"
+   let id = yeast().await.to_string(); //=> "NgqS4Rd"
 }
 ```
