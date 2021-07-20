@@ -21,7 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ needs.release-please.outputs.release_created }}
     steps:
-      - run: echo this should have been published
+      - uses: actions/checkout@v2
+      - name: set up rust from toolcahin file
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
 
       - name: login
         uses: actions-rs/cargo@v1
