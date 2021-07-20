@@ -108,10 +108,7 @@ jobs:
         with:
           profile: minimal
       - name: run benchmark
-        uses: actions-rs/cargo@v1
-        with:
-          command: bench
-          args: --all-features |  tee output.txt
+        run: cargo bench --all-features | tee output.txt
       - name: Store benchmark result
         uses: rhysd/github-action-benchmark@v1
         with:
