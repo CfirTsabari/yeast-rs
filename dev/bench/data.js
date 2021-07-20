@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1626817228895,
+  "lastUpdate": 1626818708853,
   "repoUrl": "https://github.com/CfirTsabari/yeast-rs",
   "entries": {
     "Rust Benchmark": [
@@ -41,6 +41,48 @@ window.BENCHMARK_DATA = {
             "name": "tokio_yeast",
             "value": 483,
             "range": "± 9",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "cfir16@gmail.com",
+            "name": "CfirTsabari",
+            "username": "CfirTsabari"
+          },
+          "committer": {
+            "email": "cfir16@gmail.com",
+            "name": "CfirTsabari",
+            "username": "CfirTsabari"
+          },
+          "distinct": true,
+          "id": "5ed201ea46991e5973d73b66626121377033f739",
+          "message": "chore: adding dependabot",
+          "timestamp": "2021-07-21T01:01:15+03:00",
+          "tree_id": "449d2a23265b919cc324fe86ab78802b1e18dac3",
+          "url": "https://github.com/CfirTsabari/yeast-rs/commit/5ed201ea46991e5973d73b66626121377033f739"
+        },
+        "date": 1626818706772,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "async_std_yeast",
+            "value": 528,
+            "range": "± 4",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "yeast",
+            "value": 506,
+            "range": "± 4",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "tokio_yeast",
+            "value": 580,
+            "range": "± 6",
             "unit": "ns/iter"
           }
         ]
