@@ -97,3 +97,31 @@ jobs:
         with:
           fetch-depth: 0
       - uses: wagoid/commitlint-github-action@v3
+  benchmark:
+    name: Run benchmark
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up rust from toolcahin file
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+      - name: run benchmark
+        uses: actions-rs/cargo@v1
+        with:
+          command: bench
+          args: --all-features |  tee output.txt
+      - name: Store benchmark result
+        uses: rhysd/github-action-benchmark@v1
+        with:
+          name: Rust Benchmark
+          tool: 'cargo'
+          output-file-path: output.txt
+          github-token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+          auto-push: true
+          # Show alert with commit comment on detecting possible performance regression
+          alert-threshold: '200%'
+          comment-on-alert: true
+          fail-on-alert: true
+          alert-comment-cc-users: '@CfirTsabari '

@@ -16,7 +16,17 @@ Using the function:
 ```rust
 # use yeast_rs::{yeast,Yeast};
 # use std::{thread::sleep, time::Duration,convert::TryInto};
+# // get current time
+# fn now() -> i64 {
+#     chrono::Utc::now().timestamp_millis()
+# }
+# // wait until next milli arrive
+# fn wait_new_milli() {
+#     let cur = now();
+#     while cur == now() {}
+# }
 # fn main() {
+    # wait_new_milli();
     let first_id :Yeast = yeast();
     let second_id :Yeast = yeast();
     sleep(Duration::from_millis(1));
