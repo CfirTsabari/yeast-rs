@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1626821490870,
+  "lastUpdate": 1626822011036,
   "repoUrl": "https://github.com/CfirTsabari/yeast-rs",
   "entries": {
     "Rust Benchmark": [
@@ -293,6 +293,48 @@ window.BENCHMARK_DATA = {
             "name": "tokio_yeast",
             "value": 558,
             "range": "± 28",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "cfir16@gmail.com",
+            "name": "CfirTsabari",
+            "username": "CfirTsabari"
+          },
+          "committer": {
+            "email": "cfir16@gmail.com",
+            "name": "CfirTsabari",
+            "username": "CfirTsabari"
+          },
+          "distinct": true,
+          "id": "a47537eee0be8f105295f6602fc0a88a43a9f49f",
+          "message": "fix: adding checkout to publish action",
+          "timestamp": "2021-07-21T01:56:02+03:00",
+          "tree_id": "4ad255edc1fcfe8db54dfc2d40b1dfad39a39a97",
+          "url": "https://github.com/CfirTsabari/yeast-rs/commit/a47537eee0be8f105295f6602fc0a88a43a9f49f"
+        },
+        "date": 1626822008564,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "async_std_yeast",
+            "value": 516,
+            "range": "± 17",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "yeast",
+            "value": 499,
+            "range": "± 17",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "tokio_yeast",
+            "value": 572,
+            "range": "± 17",
             "unit": "ns/iter"
           }
         ]
