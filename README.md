@@ -8,6 +8,17 @@
 </div>
 
 <div align="center">
+  <!-- Git Pod -->
+  <a href="https://gitpod.io/#https://github.com/CfirTsabari/yeast-rs">
+    <img src="https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod"
+    alt="Gitpod ready-to-code" />
+  </a>
+    <!-- Rust CI -->
+  <a href="https://github.com/CfirTsabari/yeast-rs/actions/workflows/rust.yml">
+    <img src="https://github.com/CfirTsabari/yeast-rs/actions/workflows/rust.yml/badge.svg"
+    alt="Rust" />
+  </a>
+
 </div>
 
 
