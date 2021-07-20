@@ -16,6 +16,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: rust
           package-name: yeast-rs
+          bump-minor-pre-major: true
+
   publish:
     needs: release-please
     runs-on: ubuntu-latest
