@@ -18,6 +18,16 @@
     <img src="https://github.com/CfirTsabari/yeast-rs/actions/workflows/rust.yml/badge.svg"
     alt="Rust" />
   </a>
+  <!-- Crates version -->
+  <a href="https://crates.io/crates/yeast-rs">
+    <img src="https://img.shields.io/crates/v/yeast-rs.svg?style=flat-square"
+    alt="Crates.io version" />
+  </a>
+  <!-- docs.rs docs -->
+  <a href="https://docs.rs/yeast-rs">
+    <img src="https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square"
+      alt="docs.rs docs" />
+  </a>
 
 </div>
 
