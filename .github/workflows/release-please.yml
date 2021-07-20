@@ -33,9 +33,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: login
-          args: $CRATES_TOKEN
-        env:
-          CRATES_TOKEN: ${{ secrets.CratesToken }}
+          args: ${{ secrets.CratesToken }}
 
       - name: publish
         uses: actions-rs/cargo@v1
