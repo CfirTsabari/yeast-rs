@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1645905388845,
+  "lastUpdate": 1645906095102,
   "repoUrl": "https://github.com/CfirTsabari/yeast-rs",
   "entries": {
     "Rust Benchmark": [
@@ -671,6 +671,48 @@ window.BENCHMARK_DATA = {
             "name": "tokio_yeast",
             "value": 356,
             "range": "± 1",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "cfir16@gmail.com",
+            "name": "CfirTsabari",
+            "username": "CfirTsabari"
+          },
+          "distinct": true,
+          "id": "d0269d3d33d97242e3fe6ea6b67e1f5119721b93",
+          "message": "chore(deps): update serial_test requirement from 0.5.1 to 0.6.0\n\nUpdates the requirements on [serial_test](https://github.com/palfrey/serial_test) to permit the latest version.\n- [Release notes](https://github.com/palfrey/serial_test/releases)\n- [Commits](https://github.com/palfrey/serial_test/compare/v0.5.1...v0.6.0)\n\n---\nupdated-dependencies:\n- dependency-name: serial_test\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+          "timestamp": "2022-02-26T22:04:14+02:00",
+          "tree_id": "e392a9daa8033afe3ed7ea10df52fe5a8a3fc17d",
+          "url": "https://github.com/CfirTsabari/yeast-rs/commit/d0269d3d33d97242e3fe6ea6b67e1f5119721b93"
+        },
+        "date": 1645906094325,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "async_std_yeast",
+            "value": 320,
+            "range": "± 8",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "yeast",
+            "value": 308,
+            "range": "± 7",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "tokio_yeast",
+            "value": 348,
+            "range": "± 6",
             "unit": "ns/iter"
           }
         ]
