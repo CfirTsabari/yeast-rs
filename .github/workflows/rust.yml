@@ -93,7 +93,9 @@ jobs:
     name: Run commitlint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      # we don't want to check commits of dependabot
+      - if: github.event.pull_request.user.login != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot-preview[bot]'
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - uses: wagoid/commitlint-github-action@v3
