@@ -92,6 +92,7 @@ jobs:
   commitlint:
     name: Run commitlint
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
     steps:
       # we don't want to check commits of dependabot
       - uses: actions/checkout@v2
