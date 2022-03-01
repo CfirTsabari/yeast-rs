@@ -44,7 +44,7 @@ impl TryFrom<String> for Yeast {
     type Error = ();
 
     fn try_from(value: String) -> Result<Self, Self::Error> {
-        match value.split_once(".") {
+        match value.split_once('.') {
             None => Ok(Yeast::new(decode(value.as_str())?, None)),
             Some(data) => Ok(Yeast::new(decode(data.0)?, Some(decode(data.1)?))),
         }
