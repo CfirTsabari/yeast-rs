@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1645906521357,
+  "lastUpdate": 1646174487948,
   "repoUrl": "https://github.com/CfirTsabari/yeast-rs",
   "entries": {
     "Rust Benchmark": [
@@ -755,6 +755,48 @@ window.BENCHMARK_DATA = {
             "name": "tokio_yeast",
             "value": 559,
             "range": "± 29",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "cfir16@gmail.com",
+            "name": "CfirTsabari",
+            "username": "CfirTsabari"
+          },
+          "committer": {
+            "email": "cfir16@gmail.com",
+            "name": "CfirTsabari",
+            "username": "CfirTsabari"
+          },
+          "distinct": true,
+          "id": "d9c7a4e1f19f03000ea4d52b23a6e2c492de6d3f",
+          "message": "chore(ci): change audit job permissions",
+          "timestamp": "2022-03-02T00:37:09+02:00",
+          "tree_id": "191e9816291b22ad47110a0fbae63223ee2aad7f",
+          "url": "https://github.com/CfirTsabari/yeast-rs/commit/d9c7a4e1f19f03000ea4d52b23a6e2c492de6d3f"
+        },
+        "date": 1646174487149,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "async_std_yeast",
+            "value": 333,
+            "range": "± 5",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "yeast",
+            "value": 317,
+            "range": "± 1",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "tokio_yeast",
+            "value": 358,
+            "range": "± 24",
             "unit": "ns/iter"
           }
         ]
