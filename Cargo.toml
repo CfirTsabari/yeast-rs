@@ -34,7 +34,7 @@ tokio = {version="1.8.1",features=["sync"],optional=true}
 
 [dev-dependencies]
 async-std = {version="1.9.0",features=["attributes"]}
-serial_test = "0.6.0"
+serial_test = "0.10.0"
 criterion = { version= "0.3.4", features=["async_tokio","async_std"]}
 tokio = {version="1.8.1",features=["rt","rt-multi-thread"]}
 
